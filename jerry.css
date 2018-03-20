@@ -1,0 +1,213 @@
+* {
+  user-select: none;
+  cursor: crosshair;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
+:root {
+  --darker: #1D1E1F;
+  --dark: #686C6F;
+  --light: #D1D2D3;
+  --lighter: #FFFFFF;
+  --accent: #D4855C;
+
+  --water: #9f98ab;
+  --fire: #B76A60;
+  --earth: #009E8D;
+  --lightning: #DAD9C7;
+}
+
+body {
+  margin: 0;
+  color: var(--dark);
+  background: var(--darker);
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.outer__grid_container {
+  display: grid;
+  width: 100vw;
+  height: 100vh;
+  grid-template-columns: 5vw 75vw 20vw;
+}
+
+.floor_marker__container {
+  display: grid;
+  grid-template-rows: 49.5vh 1vh 49.5vh;
+}
+
+.floor__marker {
+  color: var(--accent);
+  font-family: 'Josefin Slab', serif;
+  font-weight: bold;
+  font-size: 5em;
+  margin: 1.5vw auto;
+}
+
+.map__container {
+  display: grid;
+  grid-template-rows: 49.5vh 1vh 49.5vh;
+}
+
+.room__list {
+  border-left: 1vh solid var(--accent);
+  height: 100vh;
+  background: var(--darker);
+  overflow: scroll;
+}
+
+.highlight__row {
+  padding: 0.75em 0 0.75em 2em;
+  font-size: 1.75em;
+}
+
+.highlight__header {
+  font-weight: bold;
+  font-size: 1.75em;
+  color: var(--accent);
+}
+
+.highlight__header span {
+  display: inline-block;
+  padding: 0.5em 1em 0.3em 0.5em;
+  margin: 1em 0;
+  border-bottom: 1vh solid var(--accent);
+}
+
+/*.highlight__row:hover,*/
+.highlight__row.active {
+  background: var(--accent);
+  color: var(--darker);
+}
+
+.highlight__row_location {
+  font-size: .5em;
+  padding-left: 2em;
+}
+
+.map {
+  height: 48vh;
+  width: 100%;
+}
+
+.map_icon {
+  font-family: FontAwesome;
+  color: white;
+}
+
+.break {
+  background: var(--accent);
+}
+
+.checkbox {
+  display: inline-block;
+  margin: 0 1em -0.2em 0;
+  height: 1em;
+  width: 1em;
+  background: var(--dark);
+}
+
+.exit.exit_active, .checkbox.exit_active {
+  fill: var(--fire);
+  background: var(--fire);
+}
+
+.bathroom.bathroom_active, .checkbox.bathroom_active {
+  fill: var(--water);
+  background: var(--water);
+}
+
+.common.common_active, .checkbox.common_active {
+  fill: var(--earth);
+  background: var(--earth);
+}
+
+.kitchen.kitchen_active, .checkbox.kitchen_active {
+  fill: var(--lightning);
+  background: var(--lightning);
+}
+
+.destination, .secret {
+  fill: var(--dark);
+}
+
+/*.destination:hover,*/
+.destination.active {
+  fill: var(--accent);
+}
+
+.tooltip__container {
+  background: var(--light);
+  color: var(--darker);
+  -webkit-box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
+  border: 3px solid var(--darker);
+  position: fixed;
+  z-index: 1000;
+  display: none;
+  padding: 1em 2em;
+  text-align: right
+}
+
+.tooltip__name {
+  margin: 0;
+}
+
+.tooltip__room {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.scroll_padding:first-of-type {
+  background: url("uncorked.svg");
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: 8em 8em;
+}
+
+.scroll_padding:last-of-type {
+  height: 50vh;
+}
+
+.size__warning {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--fire);
+  font-size: 1rem;
+  color: white;
+  padding: 1em;
+  text-align: center;
+  z-index: 1000;
+}
+
+@media screen and (max-width: 1500px) {
+  body {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .outer__grid_container {
+    display: grid;
+    width: 100vw;
+    height: 100vh;
+    grid-template-columns: 5vw auto;
+  }
+
+  .room__list {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .size__warning {
+    display: block;
+  }
+}
